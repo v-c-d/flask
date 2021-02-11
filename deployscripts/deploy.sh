@@ -2,9 +2,9 @@
 
 rm -rf ~/StatsApp
 
-whoami
-su eltov
-whoami
+# whoami
+sudo su eltov
+# whoami
 cp -r /VSTSAgent/_work/r1/a/_v-c-d.flask/drop/ ~/StatsApp
 cd ~/StatsApp
 ls -al
