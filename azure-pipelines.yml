@@ -31,7 +31,7 @@ jobs:
       displayName: 'Copy files'
       inputs:
         sourceFolder: '$(Build.Repository.LocalPath)'
-        contents: '*'
+        contents: '**'
         targetFolder: '$(Build.ArtifactStagingDirectory)'
 
     - task: PublishBuildArtifacts@1
