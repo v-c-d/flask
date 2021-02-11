@@ -17,6 +17,7 @@ jobs:
           versionSpec: '3.6'
         displayName: 'Use Python $(python.version)'
       - script: |
+          which python
           echo 'Working directory is supposed to be : '
           echo '$(Build.Repository.LocalPath)'
           python -m pip install --upgrade pip
@@ -29,6 +30,9 @@ jobs:
           pwd
           ls -al
           pip install -r requirements.txt
+          echo 'After installing, it is :'
+          pwd
+          ls -al
         workingDirectory: '$(Build.Repository.LocalPath)'
         displayName: 'Install dependencies'
       # - script: |
