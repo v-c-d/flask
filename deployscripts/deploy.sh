@@ -2,11 +2,17 @@
 
 echo 'HHHHHHHHHHHHHHHHHEEEEEEEEEEELLLLLLLLLLLLLLLLLOOOOOOOOOOOOOOOOO'
 whoami
+su eltov
+whoami
+
+cd
 ls -al
 pwd
+
 rm -rf ~/StatsApp
 mkdir -p ~/StatsApp
-cp -r /VSTSAgent/_work/r1/a/_v-c-d.flask/drop/ ~/StatsApp
+cp -r /VSTSAgent/_work/r1/a/_v-c-d.flask/drop/* ~/StatsApp
+cp -r /VSTSAgent/_work/r1/a/_v-c-d.flask/drop/.* ~/StatsApp
 cd ~/StatsApp
 ls -al
 pwd
