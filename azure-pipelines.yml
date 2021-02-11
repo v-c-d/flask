@@ -13,26 +13,33 @@ strategy:
     Python36:
       python.version: '3.6'
 
-steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '$(python.version)'
-  displayName: 'Use Python $(python.version)'
+jobs:
+  - job: Build
+    steps:
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: '$(python.version)'
+        displayName: 'Use Python $(python.version)'
+      - script: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+        displayName: 'Install dependencies'
 
-- script: |
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-  displayName: 'Install dependencies'
+      - script: |
+          pip install pytest pytest-azurepipelines
+        displayName: 'pytest'
+  - job: Deploy
+    dependsOn: Build
+    steps:
+    - task: CopyFiles@2
+      displayName: 'Copy files'
+      inputs:
+        sourceFolder: '$(Build.Repository.LocalPath)'
+        contents: '*'
+        targetFolder: '$(Build.ArtifactStagingDirectory)'
 
-- script: |
-    pip install pytest pytest-azurepipelines
-  displayName: 'pytest'
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact'
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
 
-- script: |
-    touch something.py
-  displayName: 'touching'
-
-- task: PublishBuildArtifacts@1    
-  displayName: 'Publish Artifact: drop'
-  inputs:
-    PathtoPublish: '$(Agent.BuildDirectory)'
