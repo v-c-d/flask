@@ -27,4 +27,6 @@ steps:
 - script: |
     pip install pytest pytest-azurepipelines
     pytest
+    pwd
+    uname -a
   displayName: 'pytest'
