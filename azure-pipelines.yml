@@ -17,9 +17,17 @@ jobs:
           versionSpec: '3.6'
         displayName: 'Use Python $(python.version)'
       - script: |
+          echo 'Working directory is supposed to be : '
+          echo '$(Build.Repository.LocalPath)'
           python -m pip install --upgrade pip
           python -m venv env
+          echo 'Current wd is :'
+          pwd
+          ls -al
           source env/bin/activate
+          echo 'After sourcing, it is :'
+          pwd
+          ls -al
           pip install -r requirements.txt
         workingDirectory: '$(Build.Repository.LocalPath)'
         displayName: 'Install dependencies'
