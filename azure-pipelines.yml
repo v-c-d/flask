@@ -30,3 +30,17 @@ steps:
     pwd
     uname -a
   displayName: 'pytest'
+
+jobs:
+  # Track deployments on the environment.
+- deployment: DeployWeb
+  displayName: deploy Web App
+  # Creates an environment if it doesn't exist.
+  environment: 'dev'
+  strategy:
+    # Default deployment strategy, more coming...
+    runOnce:
+      deploy:
+        steps:
+        - checkout: self
+        - script: echo my first deployment
