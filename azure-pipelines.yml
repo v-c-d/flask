@@ -39,7 +39,7 @@ jobs:
           ls -al
           echo 'Env folder after installing requirement is :'
           pwd
-          ls -al virtual-env
+          ls -al virtual-env/python3.6/site-packages/
         workingDirectory: '$(Build.Repository.LocalPath)'
         displayName: 'Install dependencies'
       # - script: |
