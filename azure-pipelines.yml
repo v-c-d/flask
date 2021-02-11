@@ -8,17 +8,13 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
-strategy:
-  matrix:
-    Python36:
-      python.version: '3.6'
 
 jobs:
   - job: Build
     steps:
       - task: UsePythonVersion@0
         inputs:
-          versionSpec: '$(python.version)'
+          versionSpec: '3.6'
         displayName: 'Use Python $(python.version)'
       - script: |
           python -m pip install --upgrade pip
@@ -42,4 +38,3 @@ jobs:
       displayName: 'Publish Artifact'
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-
