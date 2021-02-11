@@ -23,23 +23,23 @@ jobs:
           echo 'Current wd is :'
           pwd
           ls -al
-          
+
           python -m pip install --upgrade pip
-          python -m venv virtual-env
+          python -m venv env
           source env/bin/activate
-          
+
           echo 'After sourcing, it is :'
           pwd
           ls -al
-          
+
           pip install -r requirements.txt
-          
+
           echo 'After installing, it is :'
           pwd
           ls -al
           echo 'Env folder after installing requirement is :'
           pwd
-          ls -alR
+          ls -al env/lib/python3.6/
         workingDirectory: '$(Build.Repository.LocalPath)'
         displayName: 'Install dependencies'
       # - script: |
@@ -54,9 +54,7 @@ jobs:
       displayName: 'Copy files'
       inputs:
         sourceFolder: '$(Build.Repository.LocalPath)'
-        contents: |
-          **/*
-          !.git/**/*
+        contents: '**'
         targetFolder: '$(Build.ArtifactStagingDirectory)'
 
     - task: PublishBuildArtifacts@1
