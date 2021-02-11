@@ -26,7 +26,9 @@ steps:
 
 - script: |
     pip install pytest pytest-azurepipelines
-    echo "HHHHHHHHHHHHHHHHHHHHHHEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
-    pwd
-    uname -a
   displayName: 'pytest'
+
+- task: PublishBuildArtifacts@1    
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
