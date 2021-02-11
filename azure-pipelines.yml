@@ -54,7 +54,9 @@ jobs:
       displayName: 'Copy files'
       inputs:
         sourceFolder: '$(Build.Repository.LocalPath)'
-        contents: '**'
+        contents: |
+          **/*
+          !.git/**/*
         targetFolder: '$(Build.ArtifactStagingDirectory)'
 
     - task: PublishBuildArtifacts@1
