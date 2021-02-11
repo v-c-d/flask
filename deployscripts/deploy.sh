@@ -1,10 +1,12 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+whoami
+sudo -i -u eltov bash << EOF
+echo "In"
+whoami
 
 rm -rf ~/StatsApp
 
-# whoami
-sudo su eltov
-# whoami
 cp -r /VSTSAgent/_work/r1/a/_v-c-d.flask/drop/ ~/StatsApp
 cd ~/StatsApp
 ls -al
@@ -17,3 +19,6 @@ source env/bin/activate
 
 pip install -r requirements.txt
 ls -al
+EOF
+echo "Out"
+whoami
