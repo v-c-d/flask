@@ -25,7 +25,7 @@ jobs:
           ls -al
           
           python -m pip install --upgrade pip
-          python -m venv env
+          python -m venv virtual-env
           source env/bin/activate
           
           echo 'After sourcing, it is :'
@@ -39,7 +39,7 @@ jobs:
           ls -al
           echo 'Env folder after installing requirement is :'
           pwd
-          ls -al env
+          ls -al virtual-env
         workingDirectory: '$(Build.Repository.LocalPath)'
         displayName: 'Install dependencies'
       # - script: |
