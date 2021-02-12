@@ -1,21 +1,21 @@
 from datetime import datetime
 from flask import Flask, render_template, request
-from urllib.parse import urlparse
 from . import app
+import socket
+
+hostname = socket.gethostname()
 
 @app.route("/")
 def home():
-    o = urlparse(request.base_url)
-    hostname = o.hostname
     return render_template("home.html", hostname=hostname)
 
 @app.route("/about/")
 def about():
-    return render_template("about.html")
+    return render_template("about.html", hostname=hostname)
 
 @app.route("/contact/")
 def contact():
-    return render_template("contact.html")
+    return render_template("contact.html", hostname=hostname)
 
 @app.route("/hello/")
 @app.route("/hello/<name>")
