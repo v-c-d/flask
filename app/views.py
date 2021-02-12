@@ -1,10 +1,13 @@
 from datetime import datetime
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from urllib.parse import urlparse
 from . import app
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    o = urlparse(request.base_url)
+    hostname = o.hostname
+    return render_template("home.html", hostname=hostname)
 
 @app.route("/about/")
 def about():
