@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-whoami
 sudo -i -u eltov bash << EOF
 echo "In"
 whoami
@@ -17,4 +16,6 @@ pip install wheel
 pip install -r requirements.txt
 EOF
 echo "Out"
-whoami
+
+# we restart server to take changes into account
+sudo systemctl restart statsapp
